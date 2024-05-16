@@ -26,3 +26,5 @@ app.use("/login", loginController);
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is already running at ${PORT}`);
 });
+
+module.exports = app;
