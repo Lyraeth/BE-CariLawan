@@ -7,12 +7,14 @@ https://carilawan-api.vercel.app/
 ```
 
 # Disclaimer
-In this project, we separate the Backend Repository and the Frontend Repository to make it easier to access and more focused on their respective tasks. The repository you are currently accessing is the backend repository. If you're curious about the frontend, you can access it at this link: .
+<p>In this project, we separate the Backend Repository and the Frontend Repository to make it easier to access and more focused on their respective tasks. The repository you are currently accessing is the backend repository. If you're curious about the frontend, you can access it at this link: .</p>
 
 # Tech Stack
-**Frontend** : *React, Tailwind CSS, DaisyUI*
-**Backend** : *ExpressJS, Prisma, Mysql*
-**Deploy** : *Vercel*
+<ul>
+  <li> <b>Frontend</b> : React, Tailwind CSS, DaisyUI</li>
+  <li> <b>Backend</b> : ExpressJS, Prisma, Mysql</li>
+  <li> <b>Deploy</b> : Vercel</li>
+</ul>
 
 # How to Run
 1. Clone the project :
