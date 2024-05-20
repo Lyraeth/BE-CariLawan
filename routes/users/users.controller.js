@@ -1,6 +1,7 @@
 const express = require("express");
 const { prisma } = require("../../config/prisma");
 const controllerUsers = express.Router();
+const { accessValidation } = require("../auth/validations");
 
 const {
   getAllUsers,
@@ -27,7 +28,7 @@ controllerUsers.get("/:id", async (req, res) => {
   }
 });
 
-controllerUsers.post("/", async (req, res) => {
+controllerUsers.post("/", accessValidation, async (req, res) => {
   try {
     const newUserData = req.body;
 
@@ -42,7 +43,7 @@ controllerUsers.post("/", async (req, res) => {
   }
 });
 
-controllerUsers.put("/:id", async (req, res) => {
+controllerUsers.put("/:id", accessValidation, async (req, res) => {
   const userId = req.params.id;
   const userData = req.body;
 
@@ -60,7 +61,7 @@ controllerUsers.put("/:id", async (req, res) => {
   });
 });
 
-controllerUsers.delete("/:id", async (req, res) => {
+controllerUsers.delete("/:id", accessValidation, async (req, res) => {
   try {
     const userId = req.params.id;
 

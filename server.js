@@ -9,7 +9,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const { accessValidation } = require("./routes/auth/validations");
 const { controllerUsers } = require("./routes/users/users.controller");
 const { loginController } = require("./routes/auth/login");
 
@@ -18,7 +17,7 @@ app.get("/", async (req, res) => {
 });
 
 // Locked Route
-app.use("/api/users/", accessValidation, controllerUsers);
+app.use("/api/users/", controllerUsers);
 
 // Route
 app.use("/login", loginController);
