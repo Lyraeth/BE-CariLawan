@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const { controllerUsers } = require("./routes/users/users.controller");
+const { controllerTeams } = require("./routes/teams/teams.controller");
 const { loginController } = require("./routes/auth/login");
 
 app.get("/", async (req, res) => {
@@ -18,6 +19,7 @@ app.get("/", async (req, res) => {
 
 // Locked Route
 app.use("/api/users/", controllerUsers);
+app.use("/api/teams/", controllerTeams);
 
 // Route
 app.use("/login", loginController);
