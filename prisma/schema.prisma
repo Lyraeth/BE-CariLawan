@@ -22,3 +22,22 @@ model Users {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Teams {
+  team_id   String @id @default(uuid())
+  team_name String @unique
+  image_url String @unique
+
+  players Players[]
+}
+
+model Players {
+  player_id       String @id @default(uuid())
+  player_name     String @unique
+  player_position String @unique
+  player_age      Int
+  player_img      String
+
+  team_id String?
+  team    Teams?  @relation(fields: [team_id], references: [team_id])
+}
