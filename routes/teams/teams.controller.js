@@ -8,14 +8,15 @@ const {
   deleteTeamById,
   editTeamById,
 } = require("./teams.service");
+const { accessValidation } = require("../auth/validations");
 
-controllerTeams.get("/", async (req, res) => {
+controllerTeams.get("/", accessValidation, async (req, res) => {
   const teams = await getAllTeams();
 
   res.send(teams);
 });
 
-controllerTeams.get("/:id", async (req, res) => {
+controllerTeams.get("/:id", accessValidation, async (req, res) => {
   try {
     const teamData = req.params.id;
     const team = await getTeamsById(teamData);

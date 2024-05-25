@@ -8,14 +8,15 @@ const {
   deletePlayerById,
   editPlayerById,
 } = require("./players.service");
+const { accessValidation } = require("../auth/validations");
 
-controllerPlayers.get("/", async (req, res) => {
+controllerPlayers.get("/", accessValidation, async (req, res) => {
   const players = await getAllPlayers();
 
   res.send(players);
 });
 
-controllerPlayers.get("/:id", async (req, res) => {
+controllerPlayers.get("/:id", accessValidation, async (req, res) => {
   try {
     const playerId = req.params.id;
 

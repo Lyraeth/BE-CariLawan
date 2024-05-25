@@ -11,13 +11,13 @@ const {
   deleteUserById,
 } = require("./users.service");
 
-controllerUsers.get("/", async (req, res) => {
+controllerUsers.get("/", accessValidation, async (req, res) => {
   const users = await getAllUsers();
 
   res.send(users);
 });
 
-controllerUsers.get("/:id", async (req, res) => {
+controllerUsers.get("/:id", accessValidation, async (req, res) => {
   try {
     const userId = parseInt(req.params.id);
     const user = await getUniqueUser(parseInt(userId));
@@ -28,7 +28,7 @@ controllerUsers.get("/:id", async (req, res) => {
   }
 });
 
-controllerUsers.post("/", accessValidation, async (req, res) => {
+controllerUsers.post("/", async (req, res) => {
   try {
     const newUserData = req.body;
 
@@ -43,7 +43,7 @@ controllerUsers.post("/", accessValidation, async (req, res) => {
   }
 });
 
-controllerUsers.put("/:id", accessValidation, async (req, res) => {
+controllerUsers.put("/:id", async (req, res) => {
   const userId = req.params.id;
   const userData = req.body;
 
@@ -61,7 +61,7 @@ controllerUsers.put("/:id", accessValidation, async (req, res) => {
   });
 });
 
-controllerUsers.delete("/:id", accessValidation, async (req, res) => {
+controllerUsers.delete("/:id", async (req, res) => {
   try {
     const userId = req.params.id;
 
