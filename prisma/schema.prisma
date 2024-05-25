@@ -27,14 +27,15 @@ model Teams {
   team_id   String @id @default(uuid())
   team_name String @unique
   image_url String @unique
+  location  String
 
   players Players[]
 }
 
 model Players {
   player_id       String @id @default(uuid())
-  player_name     String @unique
-  player_position String @unique
+  player_name     String
+  player_position String
   player_age      Int
   player_img      String
 

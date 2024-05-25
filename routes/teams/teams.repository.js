@@ -21,6 +21,7 @@ const insertTeams = async (teamData) => {
     data: {
       team_name: teamData.team_name,
       image_url: teamData.image_url,
+      location: teamData.location,
     },
   });
   return team;
