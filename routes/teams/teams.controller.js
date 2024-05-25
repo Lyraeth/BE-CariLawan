@@ -8,7 +8,6 @@ const {
   deleteTeamById,
   editTeamById,
 } = require("./teams.service");
-const { deleteTeam } = require("./teams.repository");
 
 controllerTeams.get("/", async (req, res) => {
   const teams = await getAllTeams();

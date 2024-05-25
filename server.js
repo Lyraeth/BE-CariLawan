@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const { controllerUsers } = require("./routes/users/users.controller");
 const { controllerTeams } = require("./routes/teams/teams.controller");
+const { controllerPlayers } = require("./routes/players/players.controller");
 const { loginController } = require("./routes/auth/login");
 
 app.get("/", async (req, res) => {
@@ -20,6 +21,7 @@ app.get("/", async (req, res) => {
 // Locked Route
 app.use("/api/users/", controllerUsers);
 app.use("/api/teams/", controllerTeams);
+app.use("/api/players/", controllerPlayers);
 
 // Route
 app.use("/login", loginController);
