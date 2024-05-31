@@ -41,14 +41,17 @@ loginController.post("/", async (req, res) => {
 
     const token = jwt.sign(payload, secret, { expiresIn: expiresIn });
 
-    return res.json({
-      data: {
-        id: checkUser.id,
-        name: checkUser.name,
-        email: checkUser.email,
-        phone: checkUser.phone,
-      },
-      token: token,
+    // return res.json({
+    //   data: {
+    //     id: checkUser.id,
+    //     name: checkUser.name,
+    //     email: checkUser.email,
+    //   },
+    //   token: token,
+    // });
+
+    return res.cookie(" ", token, { httpOnly: true }).send({
+      message: "Login successful",
     });
   } else {
     return res.status(403).json({

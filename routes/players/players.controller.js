@@ -1,5 +1,6 @@
 const express = require("express");
 const controllerPlayers = express.Router();
+const authenticateToken = require("../../middleware/auth");
 
 const {
   getAllPlayers,
@@ -8,15 +9,14 @@ const {
   deletePlayerById,
   editPlayerById,
 } = require("./players.service");
-const { accessValidation } = require("../auth/validations");
 
-controllerPlayers.get("/", accessValidation, async (req, res) => {
+controllerPlayers.get("/", authenticateToken, async (req, res) => {
   const players = await getAllPlayers();
 
   res.send(players);
 });
 
-controllerPlayers.get("/:id", accessValidation, async (req, res) => {
+controllerPlayers.get("/:id", authenticateToken, async (req, res) => {
   try {
     const playerId = req.params.id;
 
