@@ -1,4 +1,5 @@
 require("dotenv").config();
+const { injectSpeedInsights } = require("@vercel/speed-insights");
 const express = require("express");
 const cors = require("cors");
 
@@ -9,6 +10,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+injectSpeedInsights();
+
 const { controllerUsers } = require("./routes/users/users.controller");
 const { controllerTeams } = require("./routes/teams/teams.controller");
 const { controllerPlayers } = require("./routes/players/players.controller");
@@ -17,6 +20,7 @@ const {
 } = require("./routes/create-team-players/team.player");
 const { loginController } = require("./routes/auth/login");
 
+// Homepage
 app.get("/", async (req, res) => {
   res.send("Welcome to CariLawan API");
 });
