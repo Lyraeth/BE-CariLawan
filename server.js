@@ -1,5 +1,6 @@
 require("dotenv").config();
 const { injectSpeedInsights } = require("@vercel/speed-insights");
+const cookieParser = require("cookie-parser");
 const express = require("express");
 const cors = require("cors");
 
@@ -8,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 injectSpeedInsights();
