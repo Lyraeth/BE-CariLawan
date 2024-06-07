@@ -5,10 +5,10 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 
-// loginController.get("/", async (req, res) => {
-//   const loginPath = path.join(__dirname, "../../public/login.html");
-//   res.sendFile(loginPath);
-// });
+loginController.get("/", async (req, res) => {
+  const loginPath = path.join(__dirname, "../../public/login.html");
+  res.sendFile(loginPath);
+});
 
 loginController.post("/", async (req, res) => {
   const { email, password } = req.body;
@@ -43,11 +43,11 @@ loginController.post("/", async (req, res) => {
 
     const secret = process.env.JWT_SECRET;
 
-    const expiresIn = 60 * 60 * 1; // Expired 1 Hour
+    const expires = 60 * 60 * 1; // Expired 1 Hour
 
-    const token = jwt.sign(payload, secret, { expiresIn: expiresIn });
+    const token = jwt.sign(payload, secret, { expiresIn: expires });
 
-    return res.cookie("authToken", token, { httpOnly: true }).send({
+    res.cookie(" ", token, { httpOnly: true }).send({
       message: "Login successful",
     });
   } else {
