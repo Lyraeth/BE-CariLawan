@@ -5,10 +5,10 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 
-// loginController.get("/", async (req, res) => {
-//   const loginPath = path.join(__dirname, "../../public/login.html");
-//   res.sendFile(loginPath);
-// });
+loginController.get("/", async (req, res) => {
+  const loginPath = path.join(__dirname, "../../public/login.html");
+  res.sendFile(loginPath);
+});
 
 loginController.post("/", async (req, res) => {
   const { email, password } = req.body;
